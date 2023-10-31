@@ -51,10 +51,10 @@ app.get('/weather', (req, res) => {
 
     geocode(req.query.address,(error, {longtitude, latitude, location} = {}) => {
         if(longtitude){
-            forecast(longtitude, latitude, (error, {degree, description,feels}) => {
+            forecast(longtitude, latitude, (error, {degree, description,feels,time,uv}) => {
                 if(degree){
                     return res.send({
-                        forecast: "In "+ location + " It is " + degree + " degrees, it feels like "+feels+" degrees and it is "+description+".",
+                        forecast: "In "+ location +" at "+ time +" It was " + degree + " degrees, it feels like "+feels+" degrees and it is "+description+".",
                         location: location
                     })
                 }else{
